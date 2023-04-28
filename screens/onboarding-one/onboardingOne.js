@@ -11,8 +11,21 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
     marginTop: 10,
   },
-
-  buttonText: {
+  onboarding__wrapper: {
+    marginBottom: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  header: {
+    fontSize: 25,
+    fontWeight: 900,
+    paddingBottom: 10,
+  },
+  header__desc: {
+    fontSize: 15,
+    fontStyle: 'italic',
+  },
+  button__text: {
     fontSize: 17,
     fontWeight: 500,
   },

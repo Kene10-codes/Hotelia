@@ -1,19 +1,24 @@
-import {Text, TouchableOpacity, SafeAreaView} from 'react-native';
+import {Text, View, TouchableOpacity, SafeAreaView} from 'react-native';
+import {Feather} from '@expo/vector-icons';
 
 import styles from './onboardingOne';
 
 export default function OnboardingOne({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Hotel Staff Management</Text>
-      <Text>All Hotel Staff in your pocket!</Text>
+      <View style={styles.onboarding__wrapper}>
+        <Text style={styles.header}>Hotel Staff Management</Text>
+        <Text style={styles.header__desc}>All hotel staff in your pocket!</Text>
+      </View>
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
           navigation.navigate ('Signup');
         }}
       >
-        <Text style={styles.buttonText}>Get Started</Text>
+        <Text style={styles.button__text}>
+          Get Started <Feather name="arrow-right" size={24} color="black" />
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
