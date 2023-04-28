@@ -1,5 +1,12 @@
 import {useState} from 'react';
-import {View, Text, SafeAreaView, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TextInput,
+  TouchableHighlight,
+  Button,
+} from 'react-native';
 
 import styles from './signup';
 
@@ -51,6 +58,11 @@ export default function Signup () {
             style={styles.input}
           />
         </View>
+
+        <TouchableHighlight>
+
+          <Button title="Submit" />
+        </TouchableHighlight>
 
       </View>
     </SafeAreaView>
