@@ -1,7 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create ({
-  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+  },
   button: {
     width: 150,
     height: 40,
@@ -12,10 +17,11 @@ const styles = StyleSheet.create ({
     marginTop: 10,
   },
   onboarding__wrapper: {
-    marginBottom: 80,
+    marginBottom: 220,
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   header: {
     fontSize: 25,
     fontWeight: 900,

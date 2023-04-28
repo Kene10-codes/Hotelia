@@ -10,16 +10,18 @@ export default function OnboardingOne({navigation}) {
         <Text style={styles.header}>Hotel Staff Management</Text>
         <Text style={styles.header__desc}>All hotel staff in your pocket!</Text>
       </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate ('Signup');
-        }}
-      >
-        <Text style={styles.button__text}>
-          Get Started <Feather name="arrow-right" size={24} color="black" />
-        </Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate ('Signup');
+          }}
+        >
+          <Text style={styles.button__text}>
+            Get Started <Feather name="arrow-right" size={24} color="black" />
+          </Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
