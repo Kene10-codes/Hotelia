@@ -72,7 +72,7 @@ export default function Signup({navigation}) {
           <TouchableHighlight>
             <Button
               style={styles.submitButton}
-              title="Submit"
+              title="Register"
               onPress={() => Alert.alert ('saved')}
             />
           </TouchableHighlight>
@@ -82,7 +82,7 @@ export default function Signup({navigation}) {
           <Text style={styles.text}>Or</Text>
         </View>
 
-        {/*  Sign using Google */}
+        {/*  Sign Up using Google */}
         <View style={{marginTop: 10}}>
           <TouchableOpacity>
             <View style={styles.googleButton__container}>
@@ -93,10 +93,10 @@ export default function Signup({navigation}) {
         </View>
 
         <View style={styles.accountContainer}>
-          <Text>Already have an account?</Text>
+          <Text style={styles.accountText__one}>Already have an account?</Text>
           <Text
-            style={styles.acccountText}
-            onPress={() => navigation.navigate ('/Login')}
+            style={styles.accountText}
+            onPress={() => navigation.navigate ('Login')}
           >
             Login
           </Text>

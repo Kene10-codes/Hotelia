@@ -55,12 +55,16 @@ const styles = StyleSheet.create ({
 
   accountContainer: {
     flexDirection: 'row',
-    alignItems: 'space-end',
-    marginTop: 10,
+    marginTop: 15,
   },
-  acccountText: {
+  accountText__one: {
+    fontSize: 15,
+    fontStyle: 'italic',
+  },
+  accountText: {
     paddingLeft: 5,
     color: 'blue',
+    fontSize: 15,
   },
 });
 
