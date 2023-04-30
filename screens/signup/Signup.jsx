@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableHighlight,
   Button,
-  Image,
 } from 'react-native';
 
 import styles from './signup';
@@ -15,7 +14,7 @@ import {TouchableOpacity} from 'react-native';
 
 import {AntDesign} from '@expo/vector-icons';
 
-export default function Signup () {
+export default function Signup({navigation}) {
   const [username, setUsername] = useState ('Admin');
   const [phone, setPhone] = useState ('');
   const [password, setPassword] = useState ('');
@@ -91,6 +90,16 @@ export default function Signup () {
               <Text style={styles.googleText}>Sign Up With Google</Text>
             </View>
           </TouchableOpacity>
+        </View>
+
+        <View style={styles.accountContainer}>
+          <Text>Already have an account?</Text>
+          <Text
+            style={styles.acccountText}
+            onPress={() => navigation.navigate ('/Login')}
+          >
+            Login
+          </Text>
         </View>
       </View>
     </SafeAreaView>

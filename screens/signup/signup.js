@@ -52,6 +52,16 @@ const styles = StyleSheet.create ({
     paddingLeft: 5,
     fontSize: 15,
   },
+
+  accountContainer: {
+    flexDirection: 'row',
+    alignItems: 'space-end',
+    marginTop: 10,
+  },
+  acccountText: {
+    paddingLeft: 5,
+    color: 'blue',
+  },
 });
 
 export default styles;
