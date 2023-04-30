@@ -9,8 +9,14 @@ import {
 } from 'react-native';
 
 import styles from './signup';
+import {Alert} from 'react-native';
 
 export default function Signup () {
+  const [username, setUsername] = useState ('Admin');
+  const [phone, setPhone] = useState ('');
+  const [password, setPassword] = useState ('');
+  const [confirmPassword, setConfirmPassword] = useState ('');
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header__container}>
@@ -19,10 +25,10 @@ export default function Signup () {
       </View>
       <View>
         <View style={styles.input__wrapper}>
-          <Text style={styles.input__text}>Name</Text>
+          <Text style={styles.input__text}>Username</Text>
           <TextInput
-            onChangeText={() => {}}
-            value=""
+            onChangeText={setUsername}
+            value={username}
             placeholder="Enter your name"
             style={styles.input}
           />
@@ -30,8 +36,8 @@ export default function Signup () {
         <View style={styles.input__wrapper}>
           <Text style={styles.input__text}>Phone Number</Text>
           <TextInput
-            onChangeText={() => {}}
-            value=""
+            onChangeText={setPhone}
+            value={phone}
             placeholder="Enter your Phone Number"
             maxLength={11}
             keyboardType="numeric"
@@ -41,8 +47,8 @@ export default function Signup () {
         <View style={styles.input__wrapper}>
           <Text style={styles.input__text}>Password</Text>
           <TextInput
-            onChangeText={() => {}}
-            value=""
+            onChangeText={setPassword}
+            value={password}
             placeholder="Enter a Password"
             style={styles.input}
             maxLength={8}
@@ -51,8 +57,8 @@ export default function Signup () {
         <View style={styles.input__wrapper}>
           <Text style={styles.input__text}>Confirm Password</Text>
           <TextInput
-            onChangeText={() => {}}
-            value=""
+            onChangeText={setConfirmPassword}
+            value={confirmPassword}
             maxLength={8}
             placeholder="Confirm Password"
             style={styles.input}
@@ -60,8 +66,7 @@ export default function Signup () {
         </View>
 
         <TouchableHighlight>
-
-          <Button title="Submit" />
+          <Button title="Submit" onPress={() => Alert.alert ('saved')} />
         </TouchableHighlight>
 
       </View>
