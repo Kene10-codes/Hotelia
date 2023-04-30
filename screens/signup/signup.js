@@ -16,7 +16,7 @@ const styles = StyleSheet.create ({
   },
   input__text: {
     fontSize: 15,
-    fontWeight: 500,
+    fontWeight: 400,
   },
   input: {
     height: 42,
@@ -25,7 +25,32 @@ const styles = StyleSheet.create ({
     marginBottom: 5,
     borderWidth: 0.5,
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 5,
+  },
+  submitButton: {
+    height: 40,
+    marginTop: 15,
+  },
+  text__container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 2,
+    marginBottom: 2,
+  },
+  text: {
+    color: 'grey',
+  },
+  googleButton__container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    height: 40,
+    flexDirection: 'row',
+    marginTop: 5,
+  },
+  googleText: {
+    paddingLeft: 5,
+    fontSize: 15,
   },
 });
 

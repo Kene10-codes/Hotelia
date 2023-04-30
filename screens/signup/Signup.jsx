@@ -6,10 +6,14 @@ import {
   TextInput,
   TouchableHighlight,
   Button,
+  Image,
 } from 'react-native';
 
 import styles from './signup';
 import {Alert} from 'react-native';
+import {TouchableOpacity} from 'react-native';
+
+import {AntDesign} from '@expo/vector-icons';
 
 export default function Signup () {
   const [username, setUsername] = useState ('Admin');
@@ -65,10 +69,29 @@ export default function Signup () {
           />
         </View>
 
-        <TouchableHighlight>
-          <Button title="Submit" onPress={() => Alert.alert ('saved')} />
-        </TouchableHighlight>
+        <View style={styles.submitButton}>
+          <TouchableHighlight>
+            <Button
+              style={styles.submitButton}
+              title="Submit"
+              onPress={() => Alert.alert ('saved')}
+            />
+          </TouchableHighlight>
+        </View>
 
+        <View style={styles.text__container}>
+          <Text style={styles.text}>Or</Text>
+        </View>
+
+        {/*  Sign using Google */}
+        <View style={{marginTop: 10}}>
+          <TouchableOpacity>
+            <View style={styles.googleButton__container}>
+              <AntDesign name="google" size={24} color="black" />
+              <Text style={styles.googleText}>Sign Up With Google</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
