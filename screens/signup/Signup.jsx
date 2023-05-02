@@ -6,12 +6,15 @@ import {
   TextInput,
   TouchableHighlight,
   Button,
+  Platform,
 } from 'react-native';
 
 import styles from './signup';
 import {Alert} from 'react-native';
 import {TouchableOpacity} from 'react-native';
 
+import useFetch from '../../hooks/useFetch';
+import {API_URL, API_URL_TWO} from '../../constants';
 import {AntDesign} from '@expo/vector-icons';
 
 export default function Signup({navigation}) {
@@ -19,6 +22,16 @@ export default function Signup({navigation}) {
   const [phone, setPhone] = useState ('');
   const [password, setPassword] = useState ('');
   const [confirmPassword, setConfirmPassword] = useState ('');
+  const [isError, setIsError] = useState (false);
+  const {refetch, data, error, fetchData} = useFetch ('register', {
+    username,
+    phone,
+    password,
+  });
+
+  const submitForm = () => {
+    fetchData ();
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,7 +86,7 @@ export default function Signup({navigation}) {
             <Button
               style={styles.submitButton}
               title="Register"
-              onPress={() => Alert.alert ('saved')}
+              onPress={() => submitForm ()}
             />
           </TouchableHighlight>
         </View>
