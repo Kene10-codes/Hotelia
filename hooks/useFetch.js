@@ -18,7 +18,8 @@ const useFetch = (endpoint, payload) => {
     url: `${PLATFORM_URL}/${endpoint}`,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
+      'Content-Type': 'Authorization',
+      'Access-Control-Allow-Methods': 'POST GET PUT PATCH DELETE',
     },
     data: payload,
   };

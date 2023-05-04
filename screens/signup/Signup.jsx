@@ -23,15 +23,35 @@ export default function Signup({navigation}) {
   const [password, setPassword] = useState ('');
   const [confirmPassword, setConfirmPassword] = useState ('');
   const [isError, setIsError] = useState (false);
-  const {refetch, data, error, fetchData} = useFetch ('register', {
+  const {refetch, error, fetchData} = useFetch ('register', {
     username,
     phone,
     password,
   });
 
-  const submitForm = () => {
-    fetchData ();
-  };
+  // const payload = {
+  //   username,
+  //   phone,
+  //   password,
+  // };
+
+  // const submitForm = async () => {
+  //   const response = await fetch (`http://localhost/api/register`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Access-Control-Allow-Origin': '*',
+  //       'Content-Type': 'Authorization',
+  //     },
+  //     body: JSON.stringify (payload),
+  //   });
+  //   try {
+  //     const jsonData = await response.json ();
+  //     console.log (jsonData + '>>>>');
+  //     return jsonData;
+  //   } catch (err) {
+  //     console.log (err);
+  //   }
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
