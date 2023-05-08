@@ -6,9 +6,12 @@ import {API_URL, API_URL_TWO} from '../constants';
 
 const PLATFORM_URL = Platform.OS === 'android' ? API_URL : API_URL_TWO;
 
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: 'secret',
+};
 // useFetch custom hook
 const useFetch = (endpoint, payload) => {
-  const [data, setData] = useState ([]);
   const [error, setError] = useState (null);
   const [isLoading, setIsLoading] = useState (false);
 
@@ -16,11 +19,7 @@ const useFetch = (endpoint, payload) => {
   const options = {
     method: 'POST',
     url: `${PLATFORM_URL}/${endpoint}`,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'Authorization',
-      'Access-Control-Allow-Methods': 'POST GET PUT PATCH DELETE',
-    },
+    headers: headers,
     data: payload,
   };
 
@@ -28,7 +27,7 @@ const useFetch = (endpoint, payload) => {
     setIsLoading (true);
     try {
       const response = await axios.request (options);
-      setData (response.data);
+      console.log (response);
       setIsLoading (false);
     } catch (error) {
       setError (error);
@@ -43,7 +42,7 @@ const useFetch = (endpoint, payload) => {
     fetchData ();
   };
 
-  return {data, error, isLoading, fetchData, refetch};
+  return {error, isLoading, fetchData, refetch};
 };
 
 export default useFetch;

@@ -8,13 +8,13 @@ import {
   Button,
   Platform,
 } from 'react-native';
+import axios from 'axios';
 
 import styles from './signup';
 import {Alert} from 'react-native';
 import {TouchableOpacity} from 'react-native';
 
 import useFetch from '../../hooks/useFetch';
-import {API_URL, API_URL_TWO} from '../../constants';
 import {AntDesign} from '@expo/vector-icons';
 
 export default function Signup({navigation}) {
@@ -22,41 +22,29 @@ export default function Signup({navigation}) {
   const [phone, setPhone] = useState ('');
   const [password, setPassword] = useState ('');
   const [confirmPassword, setConfirmPassword] = useState ('');
-  const [isError, setIsError] = useState (false);
-  const {refetch, error, fetchData} = useFetch ('register', {
+  const [passwordError, setPasswordError] = useState ('');
+  const {error, fetchData} = useFetch ('register', {
     username,
     phone,
     password,
   });
 
-  // const payload = {
-  //   username,
-  //   phone,
-  //   password,
-  // };
-
-  // const submitForm = async () => {
-  //   const response = await fetch (`http://localhost/api/register`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Access-Control-Allow-Origin': '*',
-  //       'Content-Type': 'Authorization',
-  //     },
-  //     body: JSON.stringify (payload),
-  //   });
-  //   try {
-  //     const jsonData = await response.json ();
-  //     console.log (jsonData + '>>>>');
-  //     return jsonData;
-  //   } catch (err) {
-  //     console.log (err);
-  //   }
-  // };
+  const submitForm = () => {
+    if (password !== confirmPassword) {
+      setPasswordError ('Password does not match');
+    } else {
+      fetchData ();
+      setPhone ('');
+      setPassword ('');
+      setConfirmPassword ('');
+      setPasswordError ('');
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header__container}>
-        <Text style={styles.header}>Hotel Staff Management</Text>
+        <Text style={styles.header}>Hotelia</Text>
         <Text>Admin Only!</Text>
       </View>
       <View>
@@ -99,6 +87,8 @@ export default function Signup({navigation}) {
             placeholder="Confirm Password"
             style={styles.input}
           />
+          {passwordError &&
+            <TextInput style={styles.error}>{passwordError}</TextInput>}
         </View>
 
         <View style={styles.submitButton}>

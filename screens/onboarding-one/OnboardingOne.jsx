@@ -7,7 +7,7 @@ export default function OnboardingOne({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.onboarding__wrapper}>
-        <Text style={styles.header}>Hotel Staff Management</Text>
+        <Text style={styles.header}>Hotelia</Text>
         <Text style={styles.header__desc}>All hotel staff in your pocket!</Text>
       </View>
       <View>
