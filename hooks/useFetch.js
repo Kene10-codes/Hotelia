@@ -26,8 +26,7 @@ const useFetch = (endpoint, payload) => {
   const fetchData = async () => {
     setIsLoading (true);
     try {
-      const response = await axios.request (options);
-      console.log (response);
+      await axios.request (options);
       setIsLoading (false);
     } catch (error) {
       setError (error);
