@@ -11,11 +11,26 @@ import {
 
 import {AntDesign} from '@expo/vector-icons';
 
+import useFetch from '../../hooks/useFetch.js';
+
 import styles from './login.js';
 
 export default function Login({navigation}) {
   const [phone, setPhone] = useState ('');
   const [password, setPassword] = useState ('');
+  const {error, setError, fetchData} = useFetch ('login', {phone, password});
+
+  const submitForm = () => {
+    if (phone.length == 0 || password.length == 0) {
+      return setError ('Fields cannot be empty');
+    } else {
+      fetchData ();
+      setPhone ('');
+      setPassword ('');
+      navigation.navigate ('Home');
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header__container}>
@@ -29,6 +44,7 @@ export default function Login({navigation}) {
           placeholder="Enter your phone number"
           style={styles.input}
         />
+
       </View>
       <View>
         <Text style={styles.input__text}>Password</Text>
@@ -40,12 +56,14 @@ export default function Login({navigation}) {
         />
       </View>
 
+      {error && <Text style={styles.error}>{error}</Text>}
+
       <View style={styles.submitButton}>
         <TouchableHighlight>
           <Button
             style={styles.submitButton}
             title="Log In"
-            onPress={() => Alert.alert ('saved')}
+            onPress={() => submitForm ()}
           />
         </TouchableHighlight>
       </View>

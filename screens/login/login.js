@@ -68,6 +68,10 @@ const styles = StyleSheet.create ({
     fontSize: 15,
     color: 'blue',
   },
+  error: {
+    color: 'red',
+    fontSize: 15,
+  },
 });
 
 export default styles;
