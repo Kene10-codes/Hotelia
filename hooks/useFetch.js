@@ -42,7 +42,7 @@ const useFetch = (endpoint, payload) => {
     fetchData ();
   };
 
-  return {error, isLoading, fetchData, refetch};
+  return {error, setError, isLoading, fetchData, refetch};
 };
 
 export default useFetch;

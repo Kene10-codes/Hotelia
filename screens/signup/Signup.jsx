@@ -22,22 +22,22 @@ export default function Signup({navigation}) {
   const [phone, setPhone] = useState ('');
   const [password, setPassword] = useState ('');
   const [confirmPassword, setConfirmPassword] = useState ('');
-  const [passwordError, setPasswordError] = useState ('');
-  const {error, fetchData} = useFetch ('register', {
+  const {error, setError, fetchData} = useFetch ('register', {
     username,
     phone,
     password,
   });
 
+  // Submit form func
   const submitForm = () => {
     if (password !== confirmPassword) {
-      setPasswordError ('Password does not match');
+      setError ('Password does not match');
     } else {
       fetchData ();
       setPhone ('');
       setPassword ('');
       setConfirmPassword ('');
-      setPasswordError ('');
+      setError ('');
     }
   };
 
@@ -45,7 +45,6 @@ export default function Signup({navigation}) {
     <SafeAreaView style={styles.container}>
       <View style={styles.header__container}>
         <Text style={styles.header}>Hotelia</Text>
-        <Text>Admin Only!</Text>
       </View>
       <View>
         <View style={styles.input__wrapper}>
@@ -87,8 +86,7 @@ export default function Signup({navigation}) {
             placeholder="Confirm Password"
             style={styles.input}
           />
-          {passwordError &&
-            <TextInput style={styles.error}>{passwordError}</TextInput>}
+          {error && <TextInput style={styles.error}>{error}</TextInput>}
         </View>
 
         <View style={styles.submitButton}>
