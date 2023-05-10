@@ -6,7 +6,7 @@ import styles from './home';
 export default function Home () {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Text>Staff Dashboard</Text>
     </View>
   );
 }
