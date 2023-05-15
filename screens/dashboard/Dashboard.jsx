@@ -7,20 +7,20 @@ import {
   TouchableHighlight,
   Button,
 } from 'react-native';
-import RNPickerSelect from 'react-native-picker-select';
+// import RNPickerSelect from 'react-native-picker-select';
 
 import useFetch from '../../hooks/useFetch';
 
-import styles from './home';
+import styles from './dashboard';
 
-export default function Home({navigation}) {
+export default function Dashboard({navigation}) {
   const [hotelName, setHotelName] = useState ('');
   const [name, setName] = useState ('');
   const [passport, setPassport] = useState ('');
   const [position, setPosition] = useState ('');
   const [salary, setSalary] = useState ('');
   const [state, setState] = useState ('');
-  const [promoted, setPromoted] = useState (false);
+  // const [promoted, setPromoted] = useState (false);
 
   const {error, setError, fetchData} = useFetch ('staff-upload', {
     hotelName,
@@ -29,17 +29,11 @@ export default function Home({navigation}) {
     position,
     salary,
     state,
-    promoted,
   });
 
   // Handle Add Staff Func
   const handleAddStaff = () => {
-    console.log ('Hi');
-    try {
-      fetchData ();
-    } catch (err) {
-      console.log (err);
-    }
+    fetchData ();
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -107,14 +101,20 @@ export default function Home({navigation}) {
           <Text style={styles.input__text}>
             promoted
           </Text>
-          <RNPickerSelect
+          {/* <TextInput
+            onChangeText={setPromoted}
+            value={promoted}
+            placeholder="Promoted"
+            style={styles.input}
+          /> */}
+          {/* <RNPickerSelect
             placeholder={{label: 'Select promotion status', value: null}}
             onValueChange={promoted => setPromoted (promoted)}
             items={[
               {label: 'Yes', value: 'true'},
               {label: 'No', value: 'false'},
             ]}
-          />
+          /> */}
         </View>
 
         <View style={styles.submitButton}>

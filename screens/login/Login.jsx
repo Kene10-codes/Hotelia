@@ -27,7 +27,7 @@ export default function Login({navigation}) {
       fetchData ();
       setPhone ('');
       setPassword ('');
-      navigation.navigate ('Home');
+      navigation.navigate ('Tabs');
     }
   };
 

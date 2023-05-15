@@ -3,13 +3,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Screens
-import {Signup, Login, OnboardingOne, Home} from './screens';
+import {Signup, Login, OnboardingOne, Dashboard, Tabs} from './screens';
 
 const Stack = createNativeStackNavigator ();
 
 export default function App () {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <Stack.Navigator
         initialRouteName="OnboardingOne"
         screenOptions={{headerShown: false}}
@@ -17,7 +17,8 @@ export default function App () {
         <Stack.Screen name="OnboardingOne" component={OnboardingOne} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
+        {/* <Stack.Screen name="Home" component={Home} /> */}
+        <Stack.Screen name="Tabs" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
