@@ -8,7 +8,8 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
   },
   header__container: {
-    marginBottom: 30,
+    marginBottom: 20,
+    marginTop: 60,
   },
   header: {
     fontSize: 20,
