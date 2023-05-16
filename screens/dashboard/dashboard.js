@@ -8,12 +8,17 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
   },
   header__container: {
-    marginBottom: 50,
+    marginBottom: 30,
   },
   header: {
     fontSize: 20,
     fontWeight: 700,
     paddingBottom: 10,
+    alignSelf: 'center',
+  },
+  header__desc: {
+    fontSize: 15,
+    fontStyle: 'italic',
   },
   input__wrapper: {
     marginTop: 6,
@@ -41,6 +46,10 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
     marginTop: 2,
     marginBottom: 2,
+  },
+  error: {
+    color: 'red',
+    fontSize: 15,
   },
 });
 

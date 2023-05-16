@@ -20,7 +20,6 @@ export default function Dashboard({navigation}) {
   const [position, setPosition] = useState ('');
   const [salary, setSalary] = useState ('');
   const [state, setState] = useState ('');
-  // const [promoted, setPromoted] = useState (false);
 
   const {error, setError, fetchData} = useFetch ('staff-upload', {
     hotelName,
@@ -33,31 +32,53 @@ export default function Dashboard({navigation}) {
 
   // Handle Add Staff Func
   const handleAddStaff = () => {
-    fetchData ();
+    if (hotelName === '' || hotelName === null) {
+      setError ('Hotel Name cannot be empty');
+    } else if (name === '' || hotelName === null) {
+      setError ('Name cannot be empty');
+    } else if (state === '' || state === null) {
+      setError ('State cannot be empty');
+    } else {
+      fetchData ();
+      setHotelName ('');
+      setName ('');
+      setPassport ('');
+      setPosition ('');
+      setSalary ('');
+      setState ('');
+      setError ('');
+    }
   };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header__container}>
         <Text style={styles.header}>Staff Data</Text>
+        <Text style={styles.header__desc}>Please fill the details below</Text>
       </View>
       <View>
         <View style={styles.input__wrapper}>
-          <Text style={styles.input__text}>Hotel Name</Text>
+          <Text style={styles.input__text}>
+            Hotel Name <Text style={{color: 'red'}}>*</Text>
+          </Text>
           <TextInput
             onChangeText={setHotelName}
             value={hotelName}
             placeholder="Hotel Name"
             style={styles.input}
           />
+          {error && <TextInput style={styles.error}>{error}</TextInput>}
         </View>
         <View style={styles.input__wrapper}>
-          <Text style={styles.input__text}>Name</Text>
+          <Text style={styles.input__text}>
+            Name <Text style={{color: 'red'}}>*</Text>
+          </Text>
           <TextInput
             onChangeText={setName}
             value={name}
             placeholder="Name"
             style={styles.input}
           />
+          {error && <TextInput style={styles.error}>{error}</TextInput>}
         </View>
 
         <View style={styles.input__wrapper}>
@@ -88,35 +109,17 @@ export default function Dashboard({navigation}) {
           />
         </View>
         <View style={styles.input__wrapper}>
-          <Text style={styles.input__text}>State</Text>
+          <Text style={styles.input__text}>
+            State <Text style={{color: 'red'}}>*</Text>
+          </Text>
           <TextInput
             onChangeText={setState}
             value={state}
             placeholder="State"
             style={styles.input}
           />
+          {error && <TextInput style={styles.error}>{error}</TextInput>}
         </View>
-
-        <View style={styles.input__wrapper}>
-          <Text style={styles.input__text}>
-            promoted
-          </Text>
-          {/* <TextInput
-            onChangeText={setPromoted}
-            value={promoted}
-            placeholder="Promoted"
-            style={styles.input}
-          /> */}
-          {/* <RNPickerSelect
-            placeholder={{label: 'Select promotion status', value: null}}
-            onValueChange={promoted => setPromoted (promoted)}
-            items={[
-              {label: 'Yes', value: 'true'},
-              {label: 'No', value: 'false'},
-            ]}
-          /> */}
-        </View>
-
         <View style={styles.submitButton}>
           <TouchableHighlight>
             <Button
