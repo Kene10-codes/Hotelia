@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,10 @@ import {
   Button,
   ScrollView,
   Alert,
+  Platform,
+  Image,
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 // import RNPickerSelect from 'react-native-picker-select';
 
 import useFetch from '../../hooks/useFetch';
@@ -24,6 +27,7 @@ export default function Dashboard({navigation}) {
   const [salary, setSalary] = useState ('');
   const [address, setAddress] = useState ('');
   const [state, setState] = useState ('');
+  const [image, setImage] = useState (null);
 
   const {error, setError, fetchData} = useFetch ('staff-upload', {
     hotelName,
@@ -44,6 +48,12 @@ export default function Dashboard({navigation}) {
       setError ('Name cannot be empty');
     } else if (phone === '' || phone === null) {
       setError ('Phone cannot be empty');
+    } else if (passport === '' || passport === null) {
+      setError ('Please upload your image ');
+    } else if (position === '' || position === null) {
+      setError ('Position cannot be empty');
+    } else if (salary === '' || salary === null) {
+      setError ('Salary cannot be empty');
     } else if (address === '' || address === null) {
       setError ('Address cannot be empty');
     } else if (state === '' || state === null) {
@@ -62,6 +72,21 @@ export default function Dashboard({navigation}) {
       setError ('');
     }
   };
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync ({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage (result.assets[0].uri);
+    }
+  };
+
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -110,14 +135,15 @@ export default function Dashboard({navigation}) {
           </View>
 
           <View style={styles.input__wrapper}>
-            <Text style={styles.input__text}>Passport</Text>
-            <TextInput
-              onChangeText={setPassport}
-              value={passport}
-              placeholder="Passport"
-              style={styles.input}
-            />
+            <Text style={styles.input__text}>
+              Image <Text style={{color: 'red'}}>*</Text>
+            </Text>
+            <Button title="Choose a passport" onPress={pickImage} />
+            {image &&
+              <Image source={{uri: image}} style={{width: 200, height: 200}} />}
+            {error && <TextInput style={styles.error}>{error}</TextInput>}
           </View>
+
           <View style={styles.input__wrapper}>
             <Text style={styles.input__text}>Position</Text>
             <TextInput
@@ -126,6 +152,7 @@ export default function Dashboard({navigation}) {
               placeholder="Position"
               style={styles.input}
             />
+            {error && <TextInput style={styles.error}>{error}</TextInput>}
           </View>
           <View style={styles.input__wrapper}>
             <Text style={styles.input__text}>Salary</Text>
@@ -135,6 +162,7 @@ export default function Dashboard({navigation}) {
               placeholder="Salary"
               style={styles.input}
             />
+            {error && <TextInput style={styles.error}>{error}</TextInput>}
           </View>
           <View style={styles.input__wrapper}>
             <Text style={styles.input__text}>
@@ -160,6 +188,7 @@ export default function Dashboard({navigation}) {
             />
             {error && <TextInput style={styles.error}>{error}</TextInput>}
           </View>
+
           <View style={styles.submitButton}>
             <TouchableHighlight>
               <Button
