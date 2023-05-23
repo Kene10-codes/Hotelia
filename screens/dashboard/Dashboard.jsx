@@ -14,7 +14,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 // import RNPickerSelect from 'react-native-picker-select';
 
-import useFetch from '../../hooks/useFetch';
+import {useFetchForm} from '../../hooks/useFetch';
 
 import styles from './dashboard';
 
@@ -29,7 +29,7 @@ export default function Dashboard({navigation}) {
   const [state, setState] = useState ('');
   const [image, setImage] = useState (null);
 
-  const {error, setError, fetchData} = useFetch ('staff-upload', {
+  const {error, setError, fetchData} = useFetchForm ('staff-upload', {
     hotelName,
     name,
     phone,
