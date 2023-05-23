@@ -99,7 +99,6 @@ export const usefetchGet = endpoint => {
     try {
       const response = await axios.request (options);
       const {data} = response;
-      console.log (data);
       setData (data);
       setIsLoading (false);
     } catch (error) {
